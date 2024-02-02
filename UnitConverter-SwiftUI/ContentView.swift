@@ -39,8 +39,9 @@ enum VolumeTypes: String, CaseIterable, InnerConversionType {
 
 struct ContentView: View {
     private let conversionType: [ConversionType] = ConversionType.allCases
-    private var inputTypes: [InnerConversionType] = []
-    private var outputTypes: [InnerConversionType] = []
+    @State private var inputType: String?
+    @State private var outputType: String?
+    @State private var inputValue = ""
     
     @State private var selectedConversionType: ConversionType = .temperature {
         didSet {
@@ -60,9 +61,6 @@ struct ContentView: View {
             }
         }
     }
-    @State private var inputType: String?
-    @State private var outputType: String?
-    @State private var inputValue = ""
     
     private var calculateValue: String {
         guard
